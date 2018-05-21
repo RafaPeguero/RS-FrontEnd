@@ -1,0 +1,47 @@
+
+<div class="card alter" style="width: 35rem;">
+    <div class="card-header text-center">
+        <h3>{{tittle}}</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="alert alert-success" *ngIf="status == 'success'">Registro completado correctamente, <a [routerLink]="['/login']">Identificate aquí</a></div>
+
+        <div class="alert alert-danger" *ngIf="status == 'error'">El registro no ha podido completarse, quizas tu correo ó nick ya esté en uso, intentalo de nuevo con otros datos </div>
+        <form ngNativeValidate #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-lg-12">
+          <p>
+            <label> Nombre</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required>
+            <span *ngIf="!name.valid && name.touched" class="text-danger">El nombre es obligatorio</span>
+          </p>
+          <br>
+          <p>
+              <label> Apellido</label>
+              <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required>
+              <span *ngIf="!surname.valid && surname.touched" class="text-danger">El apellido es obligatorio</span>
+            </p>
+            <br>
+            <p>
+                <label> Apodo</label>
+                <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required>
+                <span *ngIf="!nick.valid && nick.touched" class="text-danger">El apodo es obligatorio</span>
+              </p>
+              <br>
+              <p>
+                  <label> Correo electrónico</label>
+                  <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                  <span *ngIf="!email.valid && email.touched" class="text-danger">El correo no es válido</span>
+                </p>
+                <br>
+                <p>
+                    <label> Constraseña </label>
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required>
+                    <span *ngIf="!password.valid && password.touched" class="text-danger">La contraseña es obligatoria</span>
+                    <span *ngIf="status == 'Form-error'" class="text-danger" > La contraseña debe ser de 5 digitos en adelante</span>
+                </p>
+                  <br>
+                <input type="submit" value="Registrate" class="btn btn-info btn-m" [disabled]="!registerForm.form.valid">
+        </form>
+      
+    </div>
+  </div>
