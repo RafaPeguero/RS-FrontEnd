@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { UserService } from './services/user.service';
+import { UploadService } from './services/upload.service';
+
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 
@@ -36,7 +38,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
   ],
   providers: [
     APP_ROUTING_PROVIDERS,
-    UserService
+    UserService,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

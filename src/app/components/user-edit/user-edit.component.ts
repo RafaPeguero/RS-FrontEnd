@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { UploadService } from '../../services/upload.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class UserEditComponent implements OnInit {
   public status: string;
   constructor( private _route: ActivatedRoute,
     private _router: Router,
-    private _UsuarioService: UserService) {
+    private _UsuarioService: UserService,
+    private _UploadService: UploadService) {
       this.title = ' Mis datos';
       this.user = this._UsuarioService.getIdentity();
       this.identiy = this.user;
@@ -40,7 +42,6 @@ export class UserEditComponent implements OnInit {
           this.identiy = this.user;
 
           // Subir imagen de usuario
-           // VIDEO 87!!!!!!!!!!!!!!!!!!!!!
         }
       }, err => {
         let errorMessage = <any>err;
@@ -50,5 +51,10 @@ export class UserEditComponent implements OnInit {
           this.status = 'error';
         }
       });
+  }
+  // tslint:disable-next-line:member-ordering
+  public filesToUpload: Array<File>;
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array <File>>fileInput.target.files;
   }
 }

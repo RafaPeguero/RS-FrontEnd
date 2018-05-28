@@ -26,11 +26,23 @@ p {
 
 .alter {
  margin: 35px auto;
+
 }
 
 .btn-m {
     margin-top: 5px;
 }
+
+/*body {
+     background-image: url(./assets/imagenes/10.jpg);
+        /* Full height */
+        /* height: 100%;  */
+
+        /* Center and scale the image nicely */
+        /* background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; */
+
 
 
 
